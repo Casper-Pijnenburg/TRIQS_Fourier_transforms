@@ -74,10 +74,7 @@ def main():
     ax.set_axisbelow(True)
     ax.legend()
     ax.set_xticks(range(1, available_cores + 1))
-
-
-    # ax.text(0.2, 0.85, f"Number of orbitals indices = {orbitals}", horizontalalignment = 'left', verticalalignment = 'center', transform = ax.transAxes, fontsize = 15)
-    # ax.text(0.2, 0.8, f"Number of DLR mesh points = {len(list(mesh.values()))}", horizontalalignment = 'left', verticalalignment = 'center', transform = ax.transAxes, fontsize = 15)
+    
     plt.savefig("execution_times.pdf")
 
     return
