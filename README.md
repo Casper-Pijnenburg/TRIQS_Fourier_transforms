@@ -1,6 +1,6 @@
 In our use-case of writing a real-space GW-solver, we're using Block Green's functions defined on imaginary DLR meshes with target shapes of `orbitals` by `orbitals`.
 
-The Fourier transforms we have to perform on the Green's functions seem to take on the bulk of the computation time. Transforming into a coefficient representation with `make_gf_dlr` and then transforming using either `make_gf_dlr_imtime` or `make_gf_dlr_imfreq` is not parallel native within TRQIS so here we can gain a speed-up.
+The Fourier transforms we have to perform on the Green's functions seem to take on the bulk of the computation time. Transforming into a coefficient representation with `make_gf_dlr` and then transforming using either `make_gf_dlr_imtime` or `make_gf_dlr_imfreq` is not parallel native within TRIQS so here we can gain a speed-up.
 
 I followed Hugo's parallel implementation for Green's functions on double meshes within TPRF. Instead of transforming the entire Block Green's function at one on a single core, I store rows of the data into smaller Green's functions of size `{1, orbitals}` and transform these seperately for each row in each block for the Block Green's function, running this in parallel and storing the data into a final transformed Block Green's function.
 
